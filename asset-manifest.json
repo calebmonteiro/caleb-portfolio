@@ -1,13 +1,13 @@
 {
   "files": {
     "main.css": "/caleb-dev-portfolio/static/css/main.a14822e8.css",
-    "main.js": "/caleb-dev-portfolio/static/js/main.71c4d778.js",
+    "main.js": "/caleb-dev-portfolio/static/js/main.ecf3ba23.js",
     "index.html": "/caleb-dev-portfolio/index.html",
     "main.a14822e8.css.map": "/caleb-dev-portfolio/static/css/main.a14822e8.css.map",
-    "main.71c4d778.js.map": "/caleb-dev-portfolio/static/js/main.71c4d778.js.map"
+    "main.ecf3ba23.js.map": "/caleb-dev-portfolio/static/js/main.ecf3ba23.js.map"
   },
   "entrypoints": [
     "static/css/main.a14822e8.css",
-    "static/js/main.71c4d778.js"
+    "static/js/main.ecf3ba23.js"
   ]
 }
