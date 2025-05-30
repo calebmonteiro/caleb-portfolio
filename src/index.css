@@ -1,0 +1,33 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Fira+Code:wght@300;400;500;600&display=swap');
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+  
+  body {
+    @apply bg-primary-light dark:bg-primary-dark font-sans;
+  }
+}
+
+@layer components {
+  .nav-link {
+    @apply cursor-pointer hover:text-secondary-light dark:hover:text-secondary-dark transition-colors duration-300;
+  }
+  
+  .btn-primary {
+    @apply px-6 py-3 border border-secondary-light dark:border-secondary-dark text-secondary-light dark:text-secondary-dark rounded hover:bg-secondary-light/10 dark:hover:bg-secondary-dark/10 transition-all duration-300;
+  }
+  
+  .section-title {
+    @apply text-2xl sm:text-3xl font-bold mb-8 text-textPrimary-light dark:text-textPrimary-dark;
+  }
+  
+  .card {
+    @apply bg-tertiary-light dark:bg-tertiary-dark p-6 rounded-lg shadow-lg hover:transform hover:-translate-y-2 transition-all duration-300;
+  }
+} 

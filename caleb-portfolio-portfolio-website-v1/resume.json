@@ -1,0 +1,117 @@
+{
+  "name": "Caleb Monteiro",
+  "contact": {
+    "address": "Toledo, Ohio",
+    "phone": "478-305-3085",
+    "email": "cmontei@rockets.utoledo.edu",
+    "linkedin": "www.linkedin.com/in/calebmonteiro"
+  },
+  "education": [
+    {
+      "institution": "University of Toledo",
+      "degree": "Bachelor of Science: Computer Science and Engineering",
+      "graduationDate": "December 2027",
+      "honors": "Jesup Scott Honors",
+      "gpa": "3.5"
+    }
+  ],
+  "technicalSkills": {
+    "languages": ["Java", "Python", "C++"],
+    "tools": ["Microsoft Office Suit", "Figma", "MATLAB", "JMP", "SQL", "AutoCAD"],
+    "webDev": ["HTML", "CSS", "JavaScript", "React"],
+    "otherSkills": ["Data Structures and Algorithms"]
+  },
+  "experience": [
+    {
+      "company": "First Solar",
+      "location": "Perrysburg, Ohio",
+      "role": "Module Engineering Intern",
+      "dates": "January 2025 – May 2025",
+      "responsibilities": [
+        "Spearheaded the implementation of tablet-based checklists using Power Apps, enhancing data accuracy and streamlining operations for over 50+ operators.",
+        "Engineered and deployed JMP scripts for real-time tracking and alarm analysis, boosting tool performance and decision-making processes, resulting in a 20% reduction in downtime.",
+        "Automated Excel yield tracking with SQL integration, streamlining data entry and reducing manual errors by 40% for 10,000+ daily modules.%."
+      ]
+    },
+    {
+      "company": "Engineering College Computing Department",
+      "location": "Toledo, Ohio",
+      "role": "IT Help Desk Technician",
+      "dates": "August 2024 – December 2024",
+      "responsibilities": [
+        "Provided technical support to students, faculty, and staff, resolving hardware and software issues efficiently.",
+        "Managed and maintained computer labs, ensuring all systems were up-to-date and functioning properly.",
+        "Assisted in the upgrade of 100+ computers using standardized imaging processes, improving system performance by 25%."
+      ]
+    },
+    {
+      "company": "University Of Toledo",
+      "location": "Toledo, Ohio",
+      "role": "Orientation Leader",
+      "dates": "May 2024 - July 2024",
+      "responsibilities": [
+        "Led orientation sessions for over 200 students, ensuring seamless campus transitions.",
+        "Collaborated with a team of 22 peers and supervisors to ensure smooth operation of orientation activities, utilizing strong communication and teamwork skills."
+      ]
+    }
+  ],
+  "projects": [
+    {
+      "name": "Course Scheduler App (Smart Class Planning for UToledo Students)",
+      "date": "May 2024",
+      "description": [
+        "Developed a full-stack web application using React, Flask, and Python, reducing manual scheduling time by over 70% for students and advisors.",
+        "Implemented intelligent scheduling algorithms to detect and prevent time conflicts, while honoring over 5 userdefined constraints (e.g., \"no Friday classes\"), reducing student/professor scheduling frustration."
+      ]
+    },
+    {
+      "name": "AI-Powered Voice Assistant on Pi0 (Low-power, always-on voice assistant utilizing the Gemini API)",
+      "date": "April 2024",
+      "description": [
+        "Configured Raspberry Pi GPIO pins to provide visual feedback (LED status indicators), enhancing user experience and showcasing direct hardware control within an embedded system.",
+        "Integrated USB audio peripherals and developed Python scripts for real-time speech-to-text and text-to-speech processing, achieving <1 second response latency for conversational interaction with the Gemini API."
+      ]
+    },
+    {
+      "name": "ReviewGenie (AI-powered review tool)",
+      "date": "October 2024",
+      "description": [
+        "Developed an embeddable widget to simplify user reviews and provide AI-driven business insights.",
+        "Designed a responsive React-based frontend for seamless website integration and improved UX."
+      ]
+    },
+    {
+      "name": "EcoNet.ai (AI insights for renewable energy accessibility)",
+      "date": "June 2024",
+      "description": [
+        "Optimized renewable energy deploymentstrategies through interactive data visualization.",
+        "Created a user-friendly interface using Figma and front-end development techniques."
+      ]
+    },
+    {
+      "name": "Amazon-inspired Frontend (Replicated Amazon's webpage UI using HTML,CSS and JS)",
+      "date": "January 2024",
+      "description": []
+    }
+  ],
+  "collegiateActivities": [
+    {
+      "organization": "RocketHacks",
+      "role": "President",
+      "dates": "January 2025 – Present",
+      "responsibilities": [
+        "Directed RocketHacks 2025, managing a 25-organizer team and 200+ participants for a successful event."
+      ]
+    },
+    {
+      "organization": "Association for Computing Machinery (ACM)",
+      "role": "Treasurer",
+      "dates": "June 2024 – May 2024"
+    },
+    {
+      "organization": "Institute of Electrical and Electronic Engineers (IEEE)",
+      "role": "Student Member",
+      "dates": "August 2023 – Present"
+    }
+  ]
+}
