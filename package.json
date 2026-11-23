@@ -1,7 +1,7 @@
 {
   "name": "caleb-portfolio",
   "version": "1.0.0",
-  "homepage": "https://github.com/calebmonteiro/caleb-portfolio",
+  "homepage": "https://calebmonteiro.github.io/caleb-portfolio/",
   "private": true,
   "dependencies": {
     "@testing-library/jest-dom": "^5.17.0",
