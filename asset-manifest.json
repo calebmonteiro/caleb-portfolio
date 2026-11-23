@@ -1,13 +1,13 @@
 {
   "files": {
-    "main.css": "/caleb-portfolio/static/css/main.f000fbf1.css",
-    "main.js": "/caleb-portfolio/static/js/main.478363b7.js",
+    "main.css": "/caleb-portfolio/static/css/main.dbd83071.css",
+    "main.js": "/caleb-portfolio/static/js/main.af9eb618.js",
     "index.html": "/caleb-portfolio/index.html",
-    "main.f000fbf1.css.map": "/caleb-portfolio/static/css/main.f000fbf1.css.map",
-    "main.478363b7.js.map": "/caleb-portfolio/static/js/main.478363b7.js.map"
+    "main.dbd83071.css.map": "/caleb-portfolio/static/css/main.dbd83071.css.map",
+    "main.af9eb618.js.map": "/caleb-portfolio/static/js/main.af9eb618.js.map"
   },
   "entrypoints": [
-    "static/css/main.f000fbf1.css",
-    "static/js/main.478363b7.js"
+    "static/css/main.dbd83071.css",
+    "static/js/main.af9eb618.js"
   ]
 }
