@@ -7,7 +7,7 @@ const groups = [
     "skills": [
       [
         "Python",
-        "Resume"
+        "Toolkit"
       ],
       [
         "SQL",
@@ -15,7 +15,7 @@ const groups = [
       ],
       [
         "PySpark",
-        "Resume"
+        "Toolkit"
       ],
       [
         "Databricks",
@@ -27,15 +27,15 @@ const groups = [
       ],
       [
         "ETL / ELT",
-        "Resume"
+        "Toolkit"
       ],
       [
         "SSMS",
-        "Resume"
+        "Toolkit"
       ],
       [
         "GitLab",
-        "Resume"
+        "Toolkit"
       ]
     ]
   },
@@ -49,7 +49,7 @@ const groups = [
       ],
       [
         "Statistical analysis",
-        "Resume"
+        "Toolkit"
       ],
       [
         "Predictive modeling",
@@ -75,11 +75,11 @@ const groups = [
     "skills": [
       [
         "React",
-        "Resume"
+        "Toolkit"
       ],
       [
         "Flask",
-        "Resume"
+        "Toolkit"
       ],
       [
         "Streamlit",
@@ -87,15 +87,15 @@ const groups = [
       ],
       [
         "REST APIs",
-        "Resume"
+        "Toolkit"
       ],
       [
         "Java",
-        "Resume"
+        "Toolkit"
       ],
       [
         "C++",
-        "Resume"
+        "Toolkit"
       ],
       [
         "Power Apps",
@@ -149,7 +149,7 @@ export default function Skills() {
         <div className="skill-tabs" role="tablist" aria-label="Skill categories">{groups.map((item, index) => <button key={item.name} className={active === index ? 'active' : ''} role="tab" aria-selected={active === index} onClick={() => setActive(index)}><span>0{index + 1}</span>{item.name}</button>)}</div>
         <div className="skill-detail" role="tabpanel" key={group.name}><div><p className="eyebrow">{group.name.toUpperCase()}</p><h3>{group.intro}</h3></div><div className="skill-matrix">{group.skills.map(([name, context]) => <div className="skill-cell" key={name}><span className="skill-check">↗</span><strong>{name}</strong><small>{context}</small></div>)}</div></div>
       </div>
-      <p className="skill-legend"><span>Work</span> professional experience <i /> <span>Project</span> personal or team project <i /> <span>Resume</span> listed skill; application context not specified</p>
+      <p className="skill-legend"><span>Work</span> professional experience <i /> <span>Project</span> personal or team project <i /> <span>Toolkit</span> additional technical skills</p>
     </section>
   );
 }

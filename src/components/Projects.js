@@ -46,7 +46,7 @@ const projects = [
       "Document ingestion"
     ],
     "scale": "Hundreds of unstructured technical documents",
-    "outcome": "82% reduction in engineering troubleshooting time, as reported in my resume.",
+    "outcome": "Reduced engineering troubleshooting time by 82%.",
     "symbol": "03"
   },
   {
@@ -62,7 +62,7 @@ const projects = [
       "Predictive modeling"
     ],
     "scale": "My Honda Civic · high-frequency OBD-II sensor streams",
-    "outcome": "A pipeline designed to calculate real-time driving efficiency and predict component wear; predictive accuracy is not reported in the resume.",
+    "outcome": "A pipeline designed to track real-time driving efficiency and model component wear.",
     "symbol": "04"
   },
   {
@@ -79,7 +79,7 @@ const projects = [
       "Text-to-speech"
     ],
     "scale": "Low-power Pi0 device · USB audio input and output",
-    "outcome": "Achieved conversational response latency below one second, as reported in my resume.",
+    "outcome": "Achieved conversational response latency below one second.",
     "symbol": "05"
   },
   {
@@ -93,7 +93,7 @@ const projects = [
       "Interactive visualization",
       "Grid availability analysis"
     ],
-    "scale": "Regional grid availability data · record count not specified",
+    "scale": "Regional grid availability data",
     "outcome": "Presented grid availability in a form that supports renewable energy accessibility and deployment planning.",
     "symbol": "06"
   }
@@ -105,7 +105,7 @@ export default function Projects() {
   const shown = useMemo(() => filter === 'All work' ? projects : projects.filter((project) => project.type === filter), [filter]);
   return (
     <section className="section-wrap section-block projects-section" id="projects">
-      <div className="section-heading"><div><p className="eyebrow">02 / SELECTED WORK</p><h2>Questions I’ve <em>worked on.</em></h2></div><p className="section-deck">Projects across commercial analytics, manufacturing data systems, and personal engineering. Each case study explains the problem, the approach, and the reported outcome.</p></div>
+      <div className="section-heading"><div><p className="eyebrow">02 / SELECTED WORK</p><h2>Questions I’ve <em>worked on.</em></h2></div><p className="section-deck">Projects across commercial analytics, manufacturing data systems, and personal engineering. A closer look at the problems I tackled and the systems I built.</p></div>
       <div className="filter-row" role="group" aria-label="Filter projects">{filters.map((option) => <button key={option} className={filter === option ? 'filter-active' : ''} onClick={() => setFilter(option)}>{option}<span>{option === 'All work' ? projects.length : projects.filter((p) => p.type === option).length}</span></button>)}</div>
       <div className="project-grid">{shown.map((project) => <article className="project-card" key={project.title}>
         <div className="project-visual">{project.image ? <img src={`${process.env.PUBLIC_URL}${project.image}`} alt={`${project.title} project`} /> : <div className="project-art"><span className="art-grid" /><span className="art-number">{project.symbol}</span><span className="art-label">{project.label}</span></div>}<span className="project-type">{project.type}</span></div>

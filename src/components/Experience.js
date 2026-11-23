@@ -7,9 +7,9 @@ const experiences = [
     "org": "Cenovus Energy",
     "role": "Market Operations Data Analyst Intern",
     "place": "Columbus, Ohio",
-    "context": "Commercial teams needed a shared view of sales, demand forecasts, inventory, and realized margins. Information spread across separate tools made it harder to spot volume drift and understand how market movements reached contract pricing.",
-    "work": "I deployed a Databricks commercial platform joining 150K+ transactions with demand forecasts. I migrated netback calculations from a local environment into Databricks and backtested the logic against historical accounting transactions. I also linked customer lifting timestamps with daily netback margins and analyzed 200+ days of market data, identifying an 11-day pricing transmission lag to inform contract renegotiations.",
-    "learned": "Rebuilding the netbacks dataset became the foundation for several commercial tools. The work taught me to validate calculations against historical records, account for timing differences in time-series analysis, and explain what a finding means for a commercial decision. Documentation and usable interfaces were essential to making the data accessible.",
+    "context": "Sales, forecasts, and margins lived across separate tools. Commercial teams needed one place to see what was changing and act on it.",
+    "work": "I built a Databricks platform joining 150K+ transactions with demand forecasts, migrated and backtested netback calculations, and analyzed customer lifting patterns. A time-series study across 200+ days revealed an 11-day pricing lag that helped inform contract discussions.",
+    "learned": "The netbacks dataset ended up supporting several of my projects. That stuck with me: investing in a reliable foundation makes the next problem easier. I also learned to ask, “What decision will someone make with this?” before building another dashboard.",
     "tags": [
       "Databricks",
       "SQL",
@@ -26,9 +26,9 @@ const experiences = [
     "org": "First Solar",
     "role": "Manufacturing Data Engineering Intern",
     "place": "Perrysburg, Ohio",
-    "context": "Engineers needed faster access to past troubleshooting knowledge, while manufacturing teams needed consistent inspections and timely visibility into equipment performance.",
-    "work": "I built an AI knowledge base in Palantir AIP / Foundry, transforming hundreds of technical documents into a structured ontology and chat interface. My resume reports an 82% reduction in engineering troubleshooting time. I also integrated database-driven alerts with cloud messaging, reducing operator wait time by 8%, and rolled out 10+ apps and dashboards for global 5S inspections.",
-    "learned": "This role took me from writing individual scripts to connecting data sources, models, and interfaces into complete workflows. I gained experience collaborating with DBAs and engineers, moving reports into JMP Live, and teaching JMP and SQL. Reusable queries, clear documentation, and training helped other people work independently with the tools.",
+    "context": "Engineers were digging through old documents to troubleshoot familiar problems. On the floor, teams needed simpler inspections and earlier equipment alerts.",
+    "work": "I turned hundreds of technical documents into an AI knowledge base in Palantir AIP / Foundry, cutting engineering troubleshooting time by 82%. I also built automated alerts that reduced operator wait time by 8%, and delivered 10+ apps and dashboards for global 5S inspections.",
+    "learned": "I started out learning JMP and SQL, then found myself teaching them to engineers. Explaining a workflow to someone else made me think much harder about clarity, reusable scripts, and documentation.",
     "tags": [
       "Palantir AIP / Foundry",
       "SQL",
@@ -38,7 +38,7 @@ const experiences = [
       "Automation"
     ],
     "metric": "82%",
-    "metricNote": "reduction in troubleshooting time, as reported in my resume"
+    "metricNote": "less time spent troubleshooting"
   },
   {
     "id": "solar",
@@ -46,9 +46,9 @@ const experiences = [
     "org": "First Solar",
     "role": "Module Engineering Intern",
     "place": "Perrysburg, Ohio",
-    "context": "Manufacturing teams needed a clearer view of equipment performance, alarms, and throughput so they could investigate problems and respond on the floor.",
-    "work": "I built interactive JMP dashboards for tool performance, alarm trends, and throughput monitoring, contributing to a reported 20% reduction in downtime. My work also included JMP scripts for shift performance, yield, and scrap analysis, along with Power Apps for inspections and improved data entry.",
-    "learned": "I developed skills in JMP, SQL, and SAS while learning how investigation and collaboration shape manufacturing solutions. Working across inspections, reporting, and fault analysis helped me connect the data on a dashboard to the process it represents.",
+    "context": "Manufacturing teams needed to see equipment problems quickly, with enough context to investigate what was happening.",
+    "work": "I built JMP dashboards for tool performance, alarm trends, and throughput, helping reduce downtime by 20%. I also automated shift, yield, and scrap reporting and developed Power Apps for inspections and data entry.",
+    "learned": "This was where I started connecting code to the manufacturing floor. A chart became much more useful once I understood the equipment, the process, and the question an operator was trying to answer.",
     "tags": [
       "JMP",
       "SQL",
@@ -57,7 +57,7 @@ const experiences = [
       "Manufacturing analytics"
     ],
     "metric": "20%",
-    "metricNote": "reported reduction in downtime"
+    "metricNote": "reduction in downtime"
   },
   {
     "id": "helpdesk",
@@ -65,9 +65,9 @@ const experiences = [
     "org": "University of Toledo",
     "role": "IT Help Desk Technician 1",
     "place": "Engineering College Computing Department",
-    "context": "Engineering students and staff rely on working labs and computing resources for daily academic work. Technical issues can interrupt that work across hardware, software, and network access.",
-    "work": "I provide Tier-1 technical support for 300+ engineering users, resolving hardware, software, and network issues. The role centers on maintaining lab availability and helping users get back to their work.",
-    "learned": "This work gives me practical experience diagnosing problems across several layers of a computing environment. It also requires translating a user’s description of an issue into clear troubleshooting steps and an understandable resolution.",
+    "context": "When a lab computer or network connection fails, someone’s work stops. My job is to help them get moving again.",
+    "work": "I provide Tier-1 support for 300+ engineering users, resolving hardware, software, and network issues and keeping lab resources available.",
+    "learned": "Troubleshooting starts with listening. I’ve learned to turn a description like “it’s not working” into a specific problem, then explain the fix without making it more complicated than it needs to be.",
     "tags": [
       "Technical support",
       "Hardware",
@@ -84,8 +84,8 @@ const experiences = [
     "role": "President",
     "place": "University of Toledo",
     "context": "RocketHacks brings students together to build, collaborate, and explore technology through a nationwide hackathon.",
-    "work": "I directed RocketHacks 2025, leading finance, operations, and logistics for an event with more than 200 participants. The role combines event planning with the practical coordination needed to deliver the participant experience.",
-    "learned": "Leading finance, operations, and logistics gives me a broader view of how decisions depend on each other. It is an opportunity to practice planning, communicating responsibilities, and coordinating work toward a shared deadline.",
+    "work": "I directed RocketHacks 2025, leading finance, operations, and logistics for more than 200 participants.",
+    "learned": "Coordinating an event means keeping track of how one decision affects the next. It gives me practice making responsibilities clear and helping people work toward the same deadline.",
     "tags": [
       "Leadership",
       "Finance",
@@ -102,7 +102,7 @@ export default function Experience() {
   const selected = experiences.find((item) => item.id === active);
   return (
     <section className="section-wrap section-block" id="experience">
-      <div className="section-heading"><div><p className="eyebrow">01 / EXPERIENCE</p><h2>What the work <em>taught me.</em></h2></div><p className="section-deck">Roles are more than titles. Here’s the problem context, the work I touched, and the lessons I carry forward.</p></div>
+      <div className="section-heading"><div><p className="eyebrow">01 / EXPERIENCE</p><h2>What the work <em>taught me.</em></h2></div><p className="section-deck">From manufacturing floors to commercial data teams: what I built, why it mattered, and what I learned along the way.</p></div>
       <div className="experience-layout">
         <div className="experience-list" role="tablist" aria-label="Experience">
           {experiences.map((item) => <button key={item.id} role="tab" aria-selected={active === item.id} className={`experience-tab ${active === item.id ? 'active' : ''}`} onClick={() => setActive(item.id)}><span className="tab-period">{item.period}</span><span className="tab-org">{item.org}</span><span className="tab-role">{item.role}</span><span className="tab-arrow">↗</span></button>)}
