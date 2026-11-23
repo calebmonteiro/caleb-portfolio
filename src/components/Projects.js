@@ -1,12 +1,102 @@
 import React, { useMemo, useState } from 'react';
 
 const projects = [
-  { title: 'Market Operations Data Workflows', type: 'Data engineering', label: 'Operational data', problem: 'Market operations teams need reliable data workflows to support time-sensitive analysis and decisions.', approach: 'During my Cenovus internship, I worked in an environment using Databricks, PySpark, Palantir Foundry, SQL Server, and GitLab across ETL / ELT workflows.', stack: ['Databricks', 'PySpark', 'Palantir Foundry', 'SQL', 'GitLab'], scale: 'Internal operational data · scale not public', outcome: 'Learned how lineage, validation, and stakeholder needs shape production data work.', image: null, symbol: '00' },
-  { title: 'F1 Race Strategy Engine', type: 'Data visualization', label: 'Race analytics', problem: 'Race strategy is a sequence of decisions under changing conditions. This project is designed to turn lap-by-lap data into a clearer view of tire behavior and pit timing.', approach: 'A data pipeline and interactive analysis surface for exploring degradation, stint pace, and alternative strategy scenarios.', stack: ['Python', 'PostgreSQL', 'Streamlit'], scale: 'Lap and stint level data · prototype in progress', outcome: 'A decision-focused analysis workflow that makes strategy assumptions visible.', image: null, symbol: '01' },
-  { title: 'Course Scheduler', type: 'Data apps', label: 'Student planning', problem: 'Degree requirements and course availability are difficult to compare when students plan semester by semester.', approach: 'A planning tool concept that parses program requirements and helps students compare schedules against constraints and preferences.', stack: ['Python', 'PDFPlumber', 'Flask', 'React', 'SQL'], scale: 'Degree requirements and course offerings · source dependent', outcome: 'Turns degree planning rules into a workflow students can inspect and adjust.', image: '/images/course-scheduler.png', symbol: '02' },
-  { title: 'EcoNet.ai', type: 'Machine learning', label: 'Sustainability', problem: 'Smaller organizations may lack an accessible starting point for understanding their environmental footprint.', approach: 'A hackathon project exploring how data and machine learning can help surface sustainability insights for small businesses.', stack: ['Python', 'Machine learning', 'React', 'AWS'], scale: 'Project prototype · dataset scale not published', outcome: 'A proof of concept for presenting sustainability information in a more approachable way.', image: '/images/econet-ai.png', symbol: '03', github: 'https://github.com/t-gallup/EcoNet', external: 'https://devpost.com/software/econet-ai' },
-  { title: 'ReviewGenie', type: 'Machine learning', label: 'Review intelligence', problem: 'Long lists of product reviews make it hard to identify recurring praise, complaints, and trade-offs.', approach: 'A review analysis concept that uses natural language processing to summarize themes and help people compare products.', stack: ['React', 'Node.js', 'MongoDB', 'NLP'], scale: 'Hackathon prototype · dataset scale not published', outcome: 'A compact way to explore review themes without reading every review individually.', image: '/images/review-genie.png', symbol: '04', github: 'https://github.com/EvanZimmerman307/review-widget', external: 'https://devpost.com/software/reviewgenie' },
-  { title: 'Voice Assistant on Raspberry Pi', type: 'Data apps', label: 'Edge computing', problem: 'A useful voice interface should be responsive and work within the limits of small hardware.', approach: 'An exploration of a lightweight assistant using a Raspberry Pi, Voice Bonnet, and Coral Edge TPU for local processing.', stack: ['Python', 'Raspberry Pi', 'Coral TPU', 'Voice Bonnet'], scale: 'Edge device prototype', outcome: 'Hands-on learning across audio input, local inference, and hardware constraints.', image: '/images/voice-assistant.png', symbol: '05' },
+  {
+    "title": "Real-Time Truck Fuel Arbitrage",
+    "type": "Data visualization",
+    "label": "Commercial analytics",
+    "problem": "A low terminal rack price does not guarantee a profitable delivery route once freight costs are included.",
+    "approach": "Built a Streamlit tool on Databricks Apps that compares OPIS rack prices with transport tariffs across buy/sell city pairs. Added a historical audit to compare apparent opportunities with realized margins.",
+    "stack": [
+      "Streamlit",
+      "Databricks Apps",
+      "SQL",
+      "OPIS pricing"
+    ],
+    "scale": "60+ terminal cities · 151K+ transactions in the historical audit",
+    "outcome": "Identifies lowest-cost supply locations and lets users inspect route volume, total margin, and 90-day margin trends.",
+    "symbol": "01"
+  },
+  {
+    "title": "Commercial Sales & Forecast Platform",
+    "type": "Data engineering",
+    "label": "Cenovus Energy",
+    "problem": "Commercial teams needed to see when actual customer lifting diverged from demand forecasts and signed allocations.",
+    "approach": "Joined accounting transactions, monthly forecasts, and deal terms in a seven-page Databricks dashboard, refreshed through scheduled data pipelines.",
+    "stack": [
+      "Databricks",
+      "SQL",
+      "Data modeling",
+      "Scheduled pipelines"
+    ],
+    "scale": "150K+ transactions · sales actuals, forecasts, and contract terms",
+    "outcome": "Provided volume-drift inputs for refinery planning, crude acquisition, and proactive commercial contract discussions.",
+    "symbol": "02"
+  },
+  {
+    "title": "Manufacturing AI Knowledge Base",
+    "type": "Machine learning",
+    "label": "First Solar",
+    "problem": "Useful corrective actions were buried in hundreds of technical documents, making historical troubleshooting knowledge difficult to retrieve.",
+    "approach": "Built an end-to-end Palantir AIP / Foundry workflow to ingest documents, structure their contents, model entities in an ontology, and expose the knowledge through a chat interface.",
+    "stack": [
+      "Palantir AIP",
+      "Foundry",
+      "Data ontology",
+      "Document ingestion"
+    ],
+    "scale": "Hundreds of unstructured technical documents",
+    "outcome": "82% reduction in engineering troubleshooting time, as reported in my resume.",
+    "symbol": "03"
+  },
+  {
+    "title": "Honda Civic Telematics & Predictive Maintenance",
+    "type": "Data engineering",
+    "label": "Personal project",
+    "problem": "Vehicle sensor streams need to be organized into useful health trends before they can support efficiency analysis and maintenance decisions.",
+    "approach": "Designed an end-to-end IoT telematics pipeline that processes high-frequency OBD-II sensor streams and models vehicle health trends.",
+    "stack": [
+      "IoT",
+      "OBD-II",
+      "Time-series analysis",
+      "Predictive modeling"
+    ],
+    "scale": "My Honda Civic · high-frequency OBD-II sensor streams",
+    "outcome": "A pipeline designed to calculate real-time driving efficiency and predict component wear; predictive accuracy is not reported in the resume.",
+    "symbol": "04"
+  },
+  {
+    "title": "AI Voice Assistant on Pi0",
+    "type": "Data apps",
+    "label": "Low-power voice interface",
+    "problem": "An always-on voice assistant needs to handle audio input and spoken responses on low-power hardware.",
+    "approach": "Integrated USB audio peripherals with Python scripts for real-time speech-to-text and text-to-speech, using the Gemini API for conversational interaction.",
+    "stack": [
+      "Python",
+      "Raspberry Pi Zero",
+      "Gemini API",
+      "Speech-to-text",
+      "Text-to-speech"
+    ],
+    "scale": "Low-power Pi0 device · USB audio input and output",
+    "outcome": "Achieved conversational response latency below one second, as reported in my resume.",
+    "symbol": "05"
+  },
+  {
+    "title": "EcoNet.ai",
+    "type": "Data visualization",
+    "label": "Renewable energy accessibility",
+    "problem": "Renewable energy planning needs a clear view of regional grid availability to identify deployment opportunities.",
+    "approach": "Modeled regional grid availability data within an interactive visualization platform to support clean energy deployment strategies.",
+    "stack": [
+      "Data modeling",
+      "Interactive visualization",
+      "Grid availability analysis"
+    ],
+    "scale": "Regional grid availability data · record count not specified",
+    "outcome": "Presented grid availability in a form that supports renewable energy accessibility and deployment planning.",
+    "symbol": "06"
+  }
 ];
 const filters = ['All work', 'Data engineering', 'Machine learning', 'Data visualization', 'Data apps'];
 
@@ -15,7 +105,7 @@ export default function Projects() {
   const shown = useMemo(() => filter === 'All work' ? projects : projects.filter((project) => project.type === filter), [filter]);
   return (
     <section className="section-wrap section-block projects-section" id="projects">
-      <div className="section-heading"><div><p className="eyebrow">02 / SELECTED WORK</p><h2>Questions I’ve <em>worked on.</em></h2></div><p className="section-deck">A mix of data analysis, machine learning concepts, and tools built around real user needs. Scope and results are stated at the level I can substantiate.</p></div>
+      <div className="section-heading"><div><p className="eyebrow">02 / SELECTED WORK</p><h2>Questions I’ve <em>worked on.</em></h2></div><p className="section-deck">Projects across commercial analytics, manufacturing data systems, and personal engineering. Each case study explains the problem, the approach, and the reported outcome.</p></div>
       <div className="filter-row" role="group" aria-label="Filter projects">{filters.map((option) => <button key={option} className={filter === option ? 'filter-active' : ''} onClick={() => setFilter(option)}>{option}<span>{option === 'All work' ? projects.length : projects.filter((p) => p.type === option).length}</span></button>)}</div>
       <div className="project-grid">{shown.map((project) => <article className="project-card" key={project.title}>
         <div className="project-visual">{project.image ? <img src={`${process.env.PUBLIC_URL}${project.image}`} alt={`${project.title} project`} /> : <div className="project-art"><span className="art-grid" /><span className="art-number">{project.symbol}</span><span className="art-label">{project.label}</span></div>}<span className="project-type">{project.type}</span></div>

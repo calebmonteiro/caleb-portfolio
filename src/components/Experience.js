@@ -2,45 +2,99 @@ import React, { useState } from 'react';
 
 const experiences = [
   {
-    id: 'cenovus', period: 'SUMMER 2026', org: 'Cenovus Energy', role: 'Market Operations Data Analyst Intern', place: 'Columbus, Ohio',
-    context: 'Market operations depends on information that is timely, traceable, and understandable. I joined a team working where data engineering meets operational decision-making.',
-    work: 'My toolkit included Databricks, PySpark, Palantir Foundry / AIP, SQL Server Management Studio, JMP, and GitLab. The role gave me exposure to ETL and ELT workflows and to how data products fit into real operational processes.',
-    learned: 'I learned to think beyond a successful query: where the data came from, how it changes, who depends on it, and what makes a result useful to someone outside the engineering team.',
-    tags: ['Databricks', 'PySpark', 'Palantir Foundry', 'SQL', 'GitLab'],
-    metric: 'Data workflows', metricNote: 'ETL / ELT in a market operations setting'
+    "id": "cenovus",
+    "period": "MAY – AUGUST 2026",
+    "org": "Cenovus Energy",
+    "role": "Market Operations Data Analyst Intern",
+    "place": "Columbus, Ohio",
+    "context": "Commercial teams needed a shared view of sales, demand forecasts, inventory, and realized margins. Information spread across separate tools made it harder to spot volume drift and understand how market movements reached contract pricing.",
+    "work": "I deployed a Databricks commercial platform joining 150K+ transactions with demand forecasts. I migrated netback calculations from a local environment into Databricks and backtested the logic against historical accounting transactions. I also linked customer lifting timestamps with daily netback margins and analyzed 200+ days of market data, identifying an 11-day pricing transmission lag to inform contract renegotiations.",
+    "learned": "Rebuilding the netbacks dataset became the foundation for several commercial tools. The work taught me to validate calculations against historical records, account for timing differences in time-series analysis, and explain what a finding means for a commercial decision. Documentation and usable interfaces were essential to making the data accessible.",
+    "tags": [
+      "Databricks",
+      "SQL",
+      "Time-series analysis",
+      "Data modeling",
+      "Git"
+    ],
+    "metric": "150K+",
+    "metricNote": "transactions joined with demand forecasts"
   },
   {
-    id: 'solar', period: 'SPRING 2025', org: 'First Solar', role: 'Module Engineering Intern', place: 'Perrysburg, Ohio',
-    context: 'Manufacturing teams work with large volumes of production information. My internship focused on reducing friction between production data, engineering analysis, and the people using that information day to day.',
-    work: 'I used JMP scripts for data mining, built documentation in PGT1, and worked on Excel tracking for production volumes of 10,000+ modules per day. I also explored practical ways to make information easier for operators and engineers to use.',
-    learned: 'The experience taught me that analysis only matters when its assumptions are clear and its output fits the workflow. I became more attentive to documentation, validation, and the difference between a useful tool and an impressive demo.',
-    tags: ['JMP', 'Excel', 'Data mining', 'Process documentation'],
-    metric: '10,000+', metricNote: 'modules represented in daily tracking workflows'
+    "id": "solar-data",
+    "period": "JUNE – DECEMBER 2025",
+    "org": "First Solar",
+    "role": "Manufacturing Data Engineering Intern",
+    "place": "Perrysburg, Ohio",
+    "context": "Engineers needed faster access to past troubleshooting knowledge, while manufacturing teams needed consistent inspections and timely visibility into equipment performance.",
+    "work": "I built an AI knowledge base in Palantir AIP / Foundry, transforming hundreds of technical documents into a structured ontology and chat interface. My resume reports an 82% reduction in engineering troubleshooting time. I also integrated database-driven alerts with cloud messaging, reducing operator wait time by 8%, and rolled out 10+ apps and dashboards for global 5S inspections.",
+    "learned": "This role took me from writing individual scripts to connecting data sources, models, and interfaces into complete workflows. I gained experience collaborating with DBAs and engineers, moving reports into JMP Live, and teaching JMP and SQL. Reusable queries, clear documentation, and training helped other people work independently with the tools.",
+    "tags": [
+      "Palantir AIP / Foundry",
+      "SQL",
+      "JMP Live",
+      "Power Apps",
+      "Power BI",
+      "Automation"
+    ],
+    "metric": "82%",
+    "metricNote": "reduction in troubleshooting time, as reported in my resume"
   },
   {
-    id: 'rocket', period: '2026', org: 'RocketHacks', role: 'President · previously Director', place: 'University of Toledo',
-    context: 'I help lead a student team creating more technology opportunities in Toledo and the Midwest. RocketHacks grew from a first large-scale campus hackathon into a community effort spanning students, sponsors, university partners, and volunteers.',
-    work: 'As Director, I helped organize RocketHacks 2025, which brought 200+ participants to Savage Arena. As President, I work with an organizer team of around 40 students on planning, partnerships, event design, and the systems that help volunteers coordinate.',
-    learned: 'Leading a technical event is a systems problem: the attendee experience depends on hundreds of small handoffs. I learned to make ownership explicit, communicate decisions earlier, and treat feedback as input for the next iteration.',
-    tags: ['Team leadership', 'Operations', 'Partnerships', 'Community'],
-    metric: '200+', metricNote: 'participants at RocketHacks 2025'
+    "id": "solar",
+    "period": "JANUARY – MAY 2025",
+    "org": "First Solar",
+    "role": "Module Engineering Intern",
+    "place": "Perrysburg, Ohio",
+    "context": "Manufacturing teams needed a clearer view of equipment performance, alarms, and throughput so they could investigate problems and respond on the floor.",
+    "work": "I built interactive JMP dashboards for tool performance, alarm trends, and throughput monitoring, contributing to a reported 20% reduction in downtime. My work also included JMP scripts for shift performance, yield, and scrap analysis, along with Power Apps for inspections and improved data entry.",
+    "learned": "I developed skills in JMP, SQL, and SAS while learning how investigation and collaboration shape manufacturing solutions. Working across inspections, reporting, and fault analysis helped me connect the data on a dashboard to the process it represents.",
+    "tags": [
+      "JMP",
+      "SQL",
+      "SAS",
+      "Power Apps",
+      "Manufacturing analytics"
+    ],
+    "metric": "20%",
+    "metricNote": "reported reduction in downtime"
   },
   {
-    id: 'helpdesk', period: '2024–2025', org: 'University of Toledo', role: 'Engineering College IT Help Desk Technician', place: 'Toledo, Ohio',
-    context: 'I supported the computing environment used by students, faculty, and staff in the College of Engineering. The work ranged from account access to classroom and desktop issues.',
-    work: 'I supported 30+ desktop deployments and helped manage more than 100 Active Directory and Microsoft 365 accounts, alongside day-to-day troubleshooting and ticket resolution.',
-    learned: 'Support work strengthened my diagnostic habits. I learned to ask better questions, isolate variables, explain technical steps clearly, and document fixes so the next person can move faster.',
-    tags: ['Windows', 'Active Directory', 'Microsoft 365', 'Troubleshooting'],
-    metric: '30+', metricNote: 'desktop deployments supported'
+    "id": "helpdesk",
+    "period": "AUGUST 2024 – PRESENT",
+    "org": "University of Toledo",
+    "role": "IT Help Desk Technician 1",
+    "place": "Engineering College Computing Department",
+    "context": "Engineering students and staff rely on working labs and computing resources for daily academic work. Technical issues can interrupt that work across hardware, software, and network access.",
+    "work": "I provide Tier-1 technical support for 300+ engineering users, resolving hardware, software, and network issues. The role centers on maintaining lab availability and helping users get back to their work.",
+    "learned": "This work gives me practical experience diagnosing problems across several layers of a computing environment. It also requires translating a user’s description of an issue into clear troubleshooting steps and an understandable resolution.",
+    "tags": [
+      "Technical support",
+      "Hardware",
+      "Software",
+      "Network troubleshooting"
+    ],
+    "metric": "300+",
+    "metricNote": "engineering users supported"
   },
   {
-    id: 'orientation', period: 'SUMMER 2024', org: 'University of Toledo', role: 'Orientation Leader', place: 'Toledo, Ohio',
-    context: 'The first days on campus can shape how students see their place in a university. I helped incoming students navigate the transition and find the people and resources they needed.',
-    work: 'I led orientation activities for 200+ students and collaborated with a group of peer leaders to answer questions, share campus resources, and keep sessions moving.',
-    learned: 'I became more comfortable speaking to groups and learned to meet people where they are. Clear explanations and small moments of reassurance can make a complicated system feel navigable.',
-    tags: ['Facilitation', 'Communication', 'Peer leadership'],
-    metric: '200+', metricNote: 'students welcomed through orientation'
-  },
+    "id": "rocket",
+    "period": "JANUARY 2025 – PRESENT",
+    "org": "RocketHacks",
+    "role": "President",
+    "place": "University of Toledo",
+    "context": "RocketHacks brings students together to build, collaborate, and explore technology through a nationwide hackathon.",
+    "work": "I directed RocketHacks 2025, leading finance, operations, and logistics for an event with more than 200 participants. The role combines event planning with the practical coordination needed to deliver the participant experience.",
+    "learned": "Leading finance, operations, and logistics gives me a broader view of how decisions depend on each other. It is an opportunity to practice planning, communicating responsibilities, and coordinating work toward a shared deadline.",
+    "tags": [
+      "Leadership",
+      "Finance",
+      "Operations",
+      "Logistics"
+    ],
+    "metric": "200+",
+    "metricNote": "participants at RocketHacks 2025"
+  }
 ];
 
 export default function Experience() {
