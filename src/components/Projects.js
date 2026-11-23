@@ -1,140 +1,26 @@
-import React, { useState } from 'react';
-import { motion } from 'framer-motion';
-import { FiGithub, FiExternalLink } from 'react-icons/fi';
-import ImageWithFallback from './ImageWithFallback';
+import React, { useMemo, useState } from 'react';
 
-const Projects = () => {
-  const [hoveredProject, setHoveredProject] = useState(null);
+const projects = [
+  { title: 'Market Operations Data Workflows', type: 'Data engineering', label: 'Operational data', problem: 'Market operations teams need reliable data workflows to support time-sensitive analysis and decisions.', approach: 'During my Cenovus internship, I worked in an environment using Databricks, PySpark, Palantir Foundry, SQL Server, and GitLab across ETL / ELT workflows.', stack: ['Databricks', 'PySpark', 'Palantir Foundry', 'SQL', 'GitLab'], scale: 'Internal operational data · scale not public', outcome: 'Learned how lineage, validation, and stakeholder needs shape production data work.', image: null, symbol: '00' },
+  { title: 'F1 Race Strategy Engine', type: 'Data visualization', label: 'Race analytics', problem: 'Race strategy is a sequence of decisions under changing conditions. This project is designed to turn lap-by-lap data into a clearer view of tire behavior and pit timing.', approach: 'A data pipeline and interactive analysis surface for exploring degradation, stint pace, and alternative strategy scenarios.', stack: ['Python', 'PostgreSQL', 'Streamlit'], scale: 'Lap and stint level data · prototype in progress', outcome: 'A decision-focused analysis workflow that makes strategy assumptions visible.', image: null, symbol: '01' },
+  { title: 'Course Scheduler', type: 'Data apps', label: 'Student planning', problem: 'Degree requirements and course availability are difficult to compare when students plan semester by semester.', approach: 'A planning tool concept that parses program requirements and helps students compare schedules against constraints and preferences.', stack: ['Python', 'PDFPlumber', 'Flask', 'React', 'SQL'], scale: 'Degree requirements and course offerings · source dependent', outcome: 'Turns degree planning rules into a workflow students can inspect and adjust.', image: '/images/course-scheduler.png', symbol: '02' },
+  { title: 'EcoNet.ai', type: 'Machine learning', label: 'Sustainability', problem: 'Smaller organizations may lack an accessible starting point for understanding their environmental footprint.', approach: 'A hackathon project exploring how data and machine learning can help surface sustainability insights for small businesses.', stack: ['Python', 'Machine learning', 'React', 'AWS'], scale: 'Project prototype · dataset scale not published', outcome: 'A proof of concept for presenting sustainability information in a more approachable way.', image: '/images/econet-ai.png', symbol: '03', github: 'https://github.com/t-gallup/EcoNet', external: 'https://devpost.com/software/econet-ai' },
+  { title: 'ReviewGenie', type: 'Machine learning', label: 'Review intelligence', problem: 'Long lists of product reviews make it hard to identify recurring praise, complaints, and trade-offs.', approach: 'A review analysis concept that uses natural language processing to summarize themes and help people compare products.', stack: ['React', 'Node.js', 'MongoDB', 'NLP'], scale: 'Hackathon prototype · dataset scale not published', outcome: 'A compact way to explore review themes without reading every review individually.', image: '/images/review-genie.png', symbol: '04', github: 'https://github.com/EvanZimmerman307/review-widget', external: 'https://devpost.com/software/reviewgenie' },
+  { title: 'Voice Assistant on Raspberry Pi', type: 'Data apps', label: 'Edge computing', problem: 'A useful voice interface should be responsive and work within the limits of small hardware.', approach: 'An exploration of a lightweight assistant using a Raspberry Pi, Voice Bonnet, and Coral Edge TPU for local processing.', stack: ['Python', 'Raspberry Pi', 'Coral TPU', 'Voice Bonnet'], scale: 'Edge device prototype', outcome: 'Hands-on learning across audio input, local inference, and hardware constraints.', image: '/images/voice-assistant.png', symbol: '05' },
+];
+const filters = ['All work', 'Data engineering', 'Machine learning', 'Data visualization', 'Data apps'];
 
-  const projects = [
-    {
-      title: 'Course Scheduler',
-      description: 'My first major project that actually solved a real problem! I was frustrated with how hard it was to plan my courses each semester, so I built this tool. It helps students visualize their degree progress and plan future semesters. The best part was when my friends started using it and giving me feedback to make it even better!',
-      tech: ['Python', 'Django', 'React', 'PostgreSQL'],
-      //github: 'https://github.com/yourusername/course-scheduler',
-      //external: 'https://course-scheduler.demo',
-      image: '/images/course-scheduler.png',
-      color: 'rgba(100, 255, 218, 0.1)'
-    },
-    {
-      title: 'AI Voice Assistant',
-      description: 'This project combines my love for AI and helping others. I created a voice assistant specifically designed for students, helping with everything from homework reminders to quick research queries. What started as a fun experiment turned into something my roommates use daily!',
-      tech: ['Python', 'TensorFlow', 'OpenAI API', 'Flask'],
-      //github: 'https://github.com/yourusername/ai-voice-assistant',
-      //external: 'https://voice-assistant.demo',
-      image: '/images/voice-assistant.png',
-      color: 'rgba(100, 218, 255, 0.1)'
-    },
-    {
-      title: 'ReviewGenie',
-      description: 'Born from countless hours of reading product reviews! I wanted to make it easier for people to make informed decisions. The app uses AI to analyze customer reviews and provide honest, unbiased summaries. It\'s amazing to see how it helps people save time and make better choices.',
-      tech: ['React', 'Node.js', 'MongoDB', 'Natural Language Processing'],
-      github: 'https://github.com/EvanZimmerman307/review-widget',
-      external: 'https://devpost.com/software/reviewgenie',
-      image: '/images/review-genie.png',
-      color: 'rgba(218, 100, 255, 0.1)'
-    },
-    {
-      title: 'EcoNet.ai',
-      description: 'This project is really close to my heart. After my internship at First Solar, I became passionate about sustainable technology. EcoNet.ai helps small businesses track and reduce their carbon footprint. It\'s not just a project - it\'s my way of contributing to a better future!',
-      tech: ['Python', 'Machine Learning', 'React', 'AWS'],
-      github: 'https://github.com/t-gallup/EcoNet',
-      external: 'https://devpost.com/software/econet-ai',
-      image: '/images/econet-ai.png',
-      color: 'rgba(255, 100, 218, 0.1)'
-    }
-  ];
-
+export default function Projects() {
+  const [filter, setFilter] = useState('All work');
+  const shown = useMemo(() => filter === 'All work' ? projects : projects.filter((project) => project.type === filter), [filter]);
   return (
-    <section id="projects" className="py-20">
-      <motion.div
-        initial={{ opacity: 0, y: 20 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.5 }}
-        viewport={{ once: true }}
-        className="container mx-auto px-4"
-      >
-        <h2 className="section-title mb-12">
-          <span className="text-secondary-light dark:text-secondary-dark">03.</span> Things I've Built
-        </h2>
-
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
-          {projects.map((project, index) => (
-            <motion.div
-              key={index}
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5, delay: index * 0.1 }}
-              viewport={{ once: true }}
-              className="relative group bg-tertiary-light/10 dark:bg-tertiary-dark/10 rounded-lg overflow-hidden"
-              onMouseEnter={() => setHoveredProject(index)}
-              onMouseLeave={() => setHoveredProject(null)}
-            >
-              {/* Project Image */}
-              <div className="relative h-64">
-                <ImageWithFallback
-                  src={project.image}
-                  alt={`${project.title} project screenshot`}
-                  className="w-full h-full object-cover"
-                />
-                <div 
-                  className="absolute inset-0 bg-gradient-to-b from-transparent to-tertiary-light/90 dark:to-tertiary-dark/90"
-                  style={{
-                    backgroundColor: hoveredProject === index ? project.color : 'rgba(10, 25, 47, 0.7)'
-                  }}
-                />
-              </div>
-
-              {/* Project Content */}
-              <div className="p-6">
-                <p className="font-mono text-sm text-secondary-light dark:text-secondary-dark mb-2">
-                  Featured Project
-                </p>
-                <h3 className="text-2xl font-bold text-textPrimary-light dark:text-textPrimary-dark mb-4">
-                  {project.title}
-                </h3>
-                <p className="text-textSecondary-light dark:text-textSecondary-dark mb-6">
-                  {project.description}
-                </p>
-                <ul className="flex flex-wrap gap-3 mb-6">
-                  {project.tech.map((tech, techIndex) => (
-                    <li
-                      key={techIndex}
-                      className="font-mono text-sm text-secondary-light dark:text-secondary-dark bg-secondary-light/10 dark:bg-secondary-dark/10 px-3 py-1 rounded"
-                    >
-                      {tech}
-                    </li>
-                  ))}
-                </ul>
-                <div className="flex gap-4">
-                  {project.github && (
-                    <a
-                      href={project.github}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="text-textPrimary-light dark:text-textPrimary-dark hover:text-secondary-light dark:hover:text-secondary-dark transition-colors"
-                    >
-                      <FiGithub size={20} />
-                    </a>
-                  )}
-                  {project.external && (
-                    <a
-                      href={project.external}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="text-textPrimary-light dark:text-textPrimary-dark hover:text-secondary-light dark:hover:text-secondary-dark transition-colors"
-                    >
-                      <FiExternalLink size={20} />
-                    </a>
-                  )}
-                </div>
-              </div>
-            </motion.div>
-          ))}
-        </div>
-      </motion.div>
+    <section className="section-wrap section-block projects-section" id="projects">
+      <div className="section-heading"><div><p className="eyebrow">02 / SELECTED WORK</p><h2>Questions I’ve <em>worked on.</em></h2></div><p className="section-deck">A mix of data analysis, machine learning concepts, and tools built around real user needs. Scope and results are stated at the level I can substantiate.</p></div>
+      <div className="filter-row" role="group" aria-label="Filter projects">{filters.map((option) => <button key={option} className={filter === option ? 'filter-active' : ''} onClick={() => setFilter(option)}>{option}<span>{option === 'All work' ? projects.length : projects.filter((p) => p.type === option).length}</span></button>)}</div>
+      <div className="project-grid">{shown.map((project) => <article className="project-card" key={project.title}>
+        <div className="project-visual">{project.image ? <img src={project.image} alt={`${project.title} project`} /> : <div className="project-art"><span className="art-grid" /><span className="art-number">{project.symbol}</span><span className="art-label">{project.label}</span></div>}<span className="project-type">{project.type}</span></div>
+        <div className="project-content"><div className="project-title-row"><h3>{project.title}</h3><span className="project-symbol">↗</span></div><p className="project-problem"><b>THE QUESTION</b>{project.problem}</p><p className="project-approach"><b>THE APPROACH</b>{project.approach}</p><div className="project-facts"><div><span>SCOPE</span><p>{project.scale}</p></div><div><span>DELIVERABLE / OUTCOME</span><p>{project.outcome}</p></div></div><ul className="tag-list">{project.stack.map((tag) => <li key={tag}>{tag}</li>)}</ul><div className="project-links">{project.github && <a href={project.github} target="_blank" rel="noreferrer">Source ↗</a>}{project.external && <a href={project.external} target="_blank" rel="noreferrer">Project page ↗</a>}</div></div>
+      </article>)}</div>
     </section>
   );
-};
-
-export default Projects; 
+}

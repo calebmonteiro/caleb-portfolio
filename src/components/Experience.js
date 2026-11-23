@@ -1,153 +1,68 @@
 import React, { useState } from 'react';
-import { motion } from 'framer-motion';
-import { FiExternalLink } from 'react-icons/fi';
-import ImageWithFallback from './ImageWithFallback';
 
-const Experience = () => {
-  const [activeTab, setActiveTab] = useState(0);
+const experiences = [
+  {
+    id: 'cenovus', period: 'SUMMER 2026', org: 'Cenovus Energy', role: 'Market Operations Data Analyst Intern', place: 'Columbus, Ohio',
+    context: 'Market operations depends on information that is timely, traceable, and understandable. I joined a team working where data engineering meets operational decision-making.',
+    work: 'My toolkit included Databricks, PySpark, Palantir Foundry / AIP, SQL Server Management Studio, JMP, and GitLab. The role gave me exposure to ETL and ELT workflows and to how data products fit into real operational processes.',
+    learned: 'I learned to think beyond a successful query: where the data came from, how it changes, who depends on it, and what makes a result useful to someone outside the engineering team.',
+    tags: ['Databricks', 'PySpark', 'Palantir Foundry', 'SQL', 'GitLab'],
+    metric: 'Data workflows', metricNote: 'ETL / ELT in a market operations setting'
+  },
+  {
+    id: 'solar', period: 'SPRING 2025', org: 'First Solar', role: 'Module Engineering Intern', place: 'Perrysburg, Ohio',
+    context: 'Manufacturing teams work with large volumes of production information. My internship focused on reducing friction between production data, engineering analysis, and the people using that information day to day.',
+    work: 'I used JMP scripts for data mining, built documentation in PGT1, and worked on Excel tracking for production volumes of 10,000+ modules per day. I also explored practical ways to make information easier for operators and engineers to use.',
+    learned: 'The experience taught me that analysis only matters when its assumptions are clear and its output fits the workflow. I became more attentive to documentation, validation, and the difference between a useful tool and an impressive demo.',
+    tags: ['JMP', 'Excel', 'Data mining', 'Process documentation'],
+    metric: '10,000+', metricNote: 'modules represented in daily tracking workflows'
+  },
+  {
+    id: 'rocket', period: '2026', org: 'RocketHacks', role: 'President · previously Director', place: 'University of Toledo',
+    context: 'I help lead a student team creating more technology opportunities in Toledo and the Midwest. RocketHacks grew from a first large-scale campus hackathon into a community effort spanning students, sponsors, university partners, and volunteers.',
+    work: 'As Director, I helped organize RocketHacks 2025, which brought 200+ participants to Savage Arena. As President, I work with an organizer team of around 40 students on planning, partnerships, event design, and the systems that help volunteers coordinate.',
+    learned: 'Leading a technical event is a systems problem: the attendee experience depends on hundreds of small handoffs. I learned to make ownership explicit, communicate decisions earlier, and treat feedback as input for the next iteration.',
+    tags: ['Team leadership', 'Operations', 'Partnerships', 'Community'],
+    metric: '200+', metricNote: 'participants at RocketHacks 2025'
+  },
+  {
+    id: 'helpdesk', period: '2024–2025', org: 'University of Toledo', role: 'Engineering College IT Help Desk Technician', place: 'Toledo, Ohio',
+    context: 'I supported the computing environment used by students, faculty, and staff in the College of Engineering. The work ranged from account access to classroom and desktop issues.',
+    work: 'I supported 30+ desktop deployments and helped manage more than 100 Active Directory and Microsoft 365 accounts, alongside day-to-day troubleshooting and ticket resolution.',
+    learned: 'Support work strengthened my diagnostic habits. I learned to ask better questions, isolate variables, explain technical steps clearly, and document fixes so the next person can move faster.',
+    tags: ['Windows', 'Active Directory', 'Microsoft 365', 'Troubleshooting'],
+    metric: '30+', metricNote: 'desktop deployments supported'
+  },
+  {
+    id: 'orientation', period: 'SUMMER 2024', org: 'University of Toledo', role: 'Orientation Leader', place: 'Toledo, Ohio',
+    context: 'The first days on campus can shape how students see their place in a university. I helped incoming students navigate the transition and find the people and resources they needed.',
+    work: 'I led orientation activities for 200+ students and collaborated with a group of peer leaders to answer questions, share campus resources, and keep sessions moving.',
+    learned: 'I became more comfortable speaking to groups and learned to meet people where they are. Clear explanations and small moments of reassurance can make a complicated system feel navigable.',
+    tags: ['Facilitation', 'Communication', 'Peer leadership'],
+    metric: '200+', metricNote: 'students welcomed through orientation'
+  },
+];
 
-  const experiences = [
-    {
-      company: 'First Solar',
-      title: 'Module Engineering Intern',
-      date: 'January 2025 - May 2025',
-      location: 'Perrysburg, Ohio',
-      companyUrl: 'https://www.firstsolar.com',
-      image: '/images/firstsolar.jpg',
-      points: [
-        'Had an amazing opportunity to work with cutting-edge solar technology and contribute to sustainable energy solutions.',
-        'Developed tablet-based checklists that made life easier for over 50 operators - it was incredible seeing how a simple tool could make such a big difference!',
-        'Created real-time tracking scripts that helped reduce downtime by 20% - learned so much about automation and its real-world impact.',
-        'The highlight was automating Excel tracking for 10,000+ daily modules - it was challenging but super rewarding seeing it work!'
-      ]
-    },
-    {
-      company: 'Engineering Computing',
-      title: 'IT Help Desk Technician',
-      date: 'August 2024 - Present',
-      location: 'Toledo, Ohio',
-      companyUrl: 'https://www.utoledo.edu/engineering/graduate-studies/currentstudents/academic.html',
-      image: '/images/utoledo.jpg',
-      points: [
-        'Loved being the go-to person for tech support - there\'s something special about helping others solve their tech problems!',
-        'Managed our computer labs and kept everything running smoothly - it was like having a second home on campus.',
-        'My proudest achievement was upgrading 100+ computers and seeing the immediate improvement in performance. The happy faces of students using the faster machines made it all worth it!'
-      ]
-    },
-    {
-      company: 'University of Toledo',
-      title: 'Orientation Leader',
-      date: 'May 2024 - July 2024',
-      location: 'Toledo, Ohio',
-      companyUrl: 'https://www.utoledo.edu',
-      image: '/images/orientation.jpg',
-      points: [
-        'One of my most fulfilling experiences - helping new students find their way and feel at home at UToledo.',
-        'Led orientation sessions for 200+ students, sharing my own experiences and tips for success.',
-        'Working with 22 amazing peers taught me so much about teamwork and leadership - we became like family!'
-      ]
-    },
-    {
-      company: 'Compass Group',
-      title: 'Student Worker',
-      date: 'September 2023 - May 2024',
-      location: 'Toledo, Ohio',
-      companyUrl: 'https://www.compass-usa.com/',
-      image: '/images/dining.jpg',
-      points: [
-        'My first job on campus - where I learned the value of hard work and attention to detail.',
-        'Loved interacting with fellow students and staff, making their dining experience better through friendly service and a clean environment.',
-        'Handling transactions and gathering feedback taught me valuable lessons about customer service and continuous improvement.',
-        'The experience helped me develop strong time management skills, balancing work with my engineering studies.'
-      ]
-    }
-  ];
-
+export default function Experience() {
+  const [active, setActive] = useState(experiences[0].id);
+  const selected = experiences.find((item) => item.id === active);
   return (
-    <section id="experience" className="py-20">
-      <motion.div
-        initial={{ opacity: 0, y: 20 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.5 }}
-        viewport={{ once: true }}
-        className="container mx-auto px-4"
-      >
-        <h2 className="section-title mb-16">
-          <span className="text-secondary-light dark:text-secondary-dark">02.</span> My Journey
-        </h2>
-        
-        <p className="text-textSecondary-light dark:text-textSecondary-dark mb-12 max-w-2xl">
-          Each role has taught me something unique and helped shape my path in tech.
-        </p>
-
-        <div className="space-y-32">
-          {experiences.map((experience, index) => (
-            <motion.div
-              key={index}
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5, delay: index * 0.1 }}
-              viewport={{ once: true }}
-              className={`relative flex flex-col ${
-                index % 2 === 0 ? 'md:flex-row' : 'md:flex-row-reverse'
-              } items-center gap-8`}
-            >
-              {/* Experience Image */}
-              <div className="w-full md:w-7/12">
-                <div className="relative overflow-hidden rounded-lg group/image">
-                  <div className="aspect-w-16 aspect-h-9 bg-tertiary-light dark:bg-tertiary-dark rounded-lg">
-                    <ImageWithFallback
-                      src={experience.image}
-                      alt={`${experience.company} experience`}
-                      className="object-cover w-full h-full transition-transform duration-500 ease-out rounded-lg transform-gpu group-hover/image:scale-110"
-                    />
-                    <div className="absolute inset-0 bg-secondary-light/20 dark:bg-secondary-dark/20 transition-all duration-500 ease-out group-hover/image:bg-transparent"></div>
-                  </div>
-                </div>
-              </div>
-
-              {/* Experience Info */}
-              <div className={`w-full md:w-5/12 ${
-                index % 2 === 0 ? 'md:text-left' : 'md:text-right'
-              }`}>
-                <p className="font-mono text-sm text-secondary-light dark:text-secondary-dark mb-2">
-                  Featured Experience
-                </p>
-                <h3 className="text-2xl font-bold mb-2">
-                  {experience.title}
-                </h3>
-                <a
-                  href={experience.companyUrl}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="inline-flex items-center gap-2 text-xl font-bold text-textSecondary-light dark:text-textSecondary-dark hover:text-secondary-light dark:hover:text-secondary-dark transition-colors mb-4"
-                >
-                  @ {experience.company}
-                  <FiExternalLink className="text-base" />
-                </a>
-                <p className="font-mono text-sm text-textSecondary-light dark:text-textSecondary-dark mb-4">
-                  {experience.date} | {experience.location}
-                </p>
-                <ul className={`space-y-4 ${
-                  index % 2 === 0 ? 'text-left' : 'text-right'
-                }`}>
-                  {experience.points.map((point, pointIndex) => (
-                    <li
-                      key={pointIndex}
-                      className="flex items-start space-x-2 text-textSecondary-light dark:text-textSecondary-dark"
-                    >
-                      <span className="text-secondary-light dark:text-secondary-dark mt-1">▹</span>
-                      <span>{point}</span>
-                    </li>
-                  ))}
-                </ul>
-              </div>
-            </motion.div>
-          ))}
+    <section className="section-wrap section-block" id="experience">
+      <div className="section-heading"><div><p className="eyebrow">01 / EXPERIENCE</p><h2>What the work <em>taught me.</em></h2></div><p className="section-deck">Roles are more than titles. Here’s the problem context, the work I touched, and the lessons I carry forward.</p></div>
+      <div className="experience-layout">
+        <div className="experience-list" role="tablist" aria-label="Experience">
+          {experiences.map((item) => <button key={item.id} role="tab" aria-selected={active === item.id} className={`experience-tab ${active === item.id ? 'active' : ''}`} onClick={() => setActive(item.id)}><span className="tab-period">{item.period}</span><span className="tab-org">{item.org}</span><span className="tab-role">{item.role}</span><span className="tab-arrow">↗</span></button>)}
         </div>
-      </motion.div>
+        <article className="experience-detail" role="tabpanel" key={selected.id}>
+          <div className="detail-top"><div><p className="eyebrow">{selected.period} · {selected.place}</p><h3>{selected.role}</h3><p className="detail-org">{selected.org}</p></div><div className="detail-stat"><strong>{selected.metric}</strong><span>{selected.metricNote}</span></div></div>
+          <div className="story-grid">
+            <div><span className="story-label">THE CONTEXT</span><p>{selected.context}</p></div>
+            <div><span className="story-label">WHAT I DID</span><p>{selected.work}</p></div>
+            <div className="learning-note"><span className="story-label">WHAT I LEARNED</span><p>{selected.learned}</p></div>
+          </div>
+          <ul className="tag-list">{selected.tags.map((tag) => <li key={tag}>{tag}</li>)}</ul>
+        </article>
+      </div>
     </section>
   );
-};
-
-export default Experience; 
+}
